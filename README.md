@@ -12,8 +12,8 @@ Output: Reduced echelon form of the matrix
 TO RUN:
 Need to have python installed
 
-python Calculator.py
+python Main.py
 
 OR
 
-python3 Calculator.py
+python3 Main.py
