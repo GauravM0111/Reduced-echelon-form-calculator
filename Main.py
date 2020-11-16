@@ -18,8 +18,9 @@ def takeInput():
     for i in range(0, rows):
         print("Enter elements in row " + str((i+1)) + " seperated by whitespace:")
         while(True):
-            matrix.append(input().split(" "))
-            if(len(matrix[i]) == columns):
+            inputRow = input().split(" ")
+            if(len(inputRow) == columns):
+                matrix.append(inputRow)
                 break
             else:
                 print("Each row requires " + str(columns) + " arguments. Try again!")
@@ -28,12 +29,19 @@ def takeInput():
 
 if __name__ == '__main__':
     matrix = takeInput()
+
+    print()
     
     print('Given matrix: ')
     for row in matrix:
         print(row)
+
+    print()
     
     rd = ReducerModule.Reducer(matrix)
 
     print('Reduced echelon form: ')
-    rd.EchelonForm()
+    echelon = rd.EchelonForm()
+
+    for row in echelon:
+        print(row)

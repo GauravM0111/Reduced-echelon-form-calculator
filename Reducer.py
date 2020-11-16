@@ -20,6 +20,14 @@ class Reducer:
                 count += 1
             if(colno == (self.cols-1)):
                 zero_count[rowno] = count
-        
-        #swapping rows so they are ordered from least leading zeros to most leading zeros
-        
+
+        #sorting matrix based on number of leading zeroes
+        zero_ordered_matrix = []
+        while(zero_count):
+            key_list = list(zero_count.keys())
+            val_list = list(zero_count.values())
+            min_index = key_list[val_list.index(min(val_list))]
+            zero_ordered_matrix.append(self.matrix[min_index])
+            zero_count.pop(min_index)
+
+        return zero_ordered_matrix
