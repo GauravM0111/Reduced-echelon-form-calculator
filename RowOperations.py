@@ -1,4 +1,4 @@
-#Function to store all matrix row operations
+#File to store all matrix row operations
 
 # eg: R1 <-> R2
 def swapRows(matrix, row1_number, row2_number):
