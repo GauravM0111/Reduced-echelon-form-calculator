@@ -18,7 +18,7 @@ def takeInput():
     for i in range(0, rows):
         print("Enter elements in row " + str((i+1)) + " seperated by whitespace:")
         while(True):
-            inputRow = input().split(" ")
+            inputRow = list(map(float, input().split(" ")))
             if(len(inputRow) == columns):
                 matrix.append(inputRow)
                 break
@@ -39,9 +39,9 @@ if __name__ == '__main__':
     print()
     
     rd = ReducerModule.Reducer(matrix)
-
     print('Reduced echelon form: ')
-    echelon = rd.EchelonForm()
-
-    for row in echelon:
+    matrix = rd.EchelonForm()
+    for row in matrix:
         print(row)
+
+    print()
