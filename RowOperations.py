@@ -1,9 +1,12 @@
 #File to store all matrix row operations
 
 # order matrix by leading zeroes
-def orderByLeadingZeroes(matrix, rows, cols):
+def orderByLeadingZeroes(matrix):
     #storing number of leading zeros in each row
+    rows = len(matrix)
+    cols = len(matrix[0])
     zero_count = {}
+
     for rowno in range(0,rows):
         count = 0
         for colno in range(0,cols):
@@ -13,6 +16,7 @@ def orderByLeadingZeroes(matrix, rows, cols):
             count += 1
         if(colno == (cols-1)):
             zero_count[rowno] = count
+            
     #sorting matrix based on number of leading zeroes
     zero_ordered_matrix = []
     while(zero_count):
@@ -33,7 +37,11 @@ def addOperation(matrix, row1_number, row2_number, row1_multiple, row2_multiple)
     for i in range(0, len(row1)):
         row1[i] = row1[i] * row1_multiple
         row2[i] = row2[i] * row2_multiple
-        matrix[row2_number][i] = row1[i] + row2[i]
+        sum = row1[i] + row2[i]
+        if(sum == -0.0):
+            matrix[row2_number][i] = 0.0
+        else:
+            matrix[row2_number][i] = sum
 
     return matrix
 
@@ -41,6 +49,10 @@ def addOperation(matrix, row1_number, row2_number, row1_multiple, row2_multiple)
 # R1 = 3R1
 def scalarMultiply(matrix, rowNumber, multiple):
     for i in range(0, len(matrix[rowNumber])):
-        matrix[rowNumber][i] = matrix[rowNumber][i] * multiple
+        product = matrix[rowNumber][i] * multiple
+        if(product == -0.0):
+            matrix[rowNumber][i] = 0.0
+        else:
+            matrix[rowNumber][i] = product
     
     return matrix

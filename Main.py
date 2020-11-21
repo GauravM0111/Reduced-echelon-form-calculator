@@ -39,8 +39,15 @@ if __name__ == '__main__':
     print()
     
     rd = ReducerModule.Reducer(matrix)
-    print('Reduced echelon form: ')
+    print('Echelon form: ')
     matrix = rd.EchelonForm()
+    for row in matrix:
+        print(row)
+
+    print()
+
+    print('Reduced Echelon form: ')
+    matrix = rd.ReducedEchelonForm()
     for row in matrix:
         print(row)
 
