@@ -49,10 +49,7 @@ def addOperation(matrix, row1_number, row2_number, row1_multiple, row2_multiple)
 # R1 = 3R1
 def scalarMultiply(matrix, rowNumber, multiple):
     for i in range(0, len(matrix[rowNumber])):
-        product = matrix[rowNumber][i] * multiple
-        if(product == -0.0):
-            matrix[rowNumber][i] = 0.0
-        else:
-            matrix[rowNumber][i] = product
+        if(matrix[rowNumber][i] != 0.0):
+            matrix[rowNumber][i] = matrix[rowNumber][i] * multiple
     
     return matrix

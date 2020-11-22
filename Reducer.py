@@ -28,7 +28,6 @@ class Reducer:
     #convert a matrix to reduced echelon form
     def ReducedEchelonForm(self):
         #convert a matrix to echelon form first
-
         #making matrix rows ordered by number of leading zeroes
         self.matrix = RowOperations.orderByLeadingZeroes(self.matrix)
 
@@ -44,11 +43,19 @@ class Reducer:
         self.matrix = RowOperations.orderByLeadingZeroes(self.matrix)
 
 
-        #making each pivot = 1
+        #making each pivot = 1 and all values above pivot = 0
         for row in range(0,self.rows):
-            for col in self.matrix[row]:
-                if(col != 0.0):
-                    self.matrix = RowOperations.scalarMultiply(self.matrix, row, (1.0/col))
+            for col in range(0, self.cols):
+                if(self.matrix[row][col] != 0.0): #pivot found
+                    #making pivot = 1
+                    self.matrix = RowOperations.scalarMultiply(self.matrix, row, (1.0/self.matrix[row][col]))
+
+                    #making all values above pivot = 0
+                    for row_above in range(row-1, -1, -1):
+                        if(self.matrix[row_above][col] != 0.0):
+                            row1_multiple = -1.0 * self.matrix[row_above][col] / self.matrix[row][col]
+                            self.matrix = RowOperations.addOperation(self.matrix, row, row_above, row1_multiple, 1)
+
                     break
 
         return self.matrix
