@@ -1,4 +1,5 @@
 import Reducer as ReducerModule
+from fractions import Fraction
 
 rows = 0
 columns = 0
@@ -32,23 +33,27 @@ if __name__ == '__main__':
 
     print()
     
-    print('Given matrix: ')
+    print('Given matrix:')
     for row in matrix:
         print(row)
 
     print()
     
     rd = ReducerModule.Reducer(matrix)
-    print('Echelon form: ')
+    print('Echelon form:')
     matrix = rd.EchelonForm()
     for row in matrix:
-        print(row)
+        print(["{0:0.3f}".format(element) for element in row], end='')
+        print('\t', end='')
+        print([str(Fraction(element).limit_denominator()) for element in row])
 
     print()
 
-    print('Reduced Echelon form: ')
+    print('Reduced Echelon form:')
     matrix = rd.ReducedEchelonForm()
     for row in matrix:
-        print(row)
+        print(["{0:0.3f}".format(element) for element in row], end='')
+        print('\t', end='')
+        print([str(Fraction(element).limit_denominator()) for element in row])
 
     print()

@@ -18,7 +18,7 @@ class Reducer:
                 if(self.matrix[row][col] != 0.0):
                     for row_below in range(row+1, self.rows):
                         if(self.matrix[row_below][col] != 0.0):
-                            row1_multiple = -1.0 * self.matrix[row_below][col] / self.matrix[row][col]
+                            row1_multiple = -1.0 * (self.matrix[row_below][col] / self.matrix[row][col])
                             self.matrix = RowOperations.addOperation(self.matrix, row, row_below, row1_multiple, 1)
                     break
         self.matrix = RowOperations.orderByLeadingZeroes(self.matrix)
@@ -37,7 +37,7 @@ class Reducer:
                 if(self.matrix[row][col] != 0.0):
                     for row_below in range(row+1, self.rows):
                         if(self.matrix[row_below][col] != 0.0):
-                            row1_multiple = -1.0 * self.matrix[row_below][col] / self.matrix[row][col]
+                            row1_multiple = -1.0 * (self.matrix[row_below][col] / self.matrix[row][col])
                             self.matrix = RowOperations.addOperation(self.matrix, row, row_below, row1_multiple, 1)
                     break
         self.matrix = RowOperations.orderByLeadingZeroes(self.matrix)
@@ -53,7 +53,7 @@ class Reducer:
                     #making all values above pivot = 0
                     for row_above in range(row-1, -1, -1):
                         if(self.matrix[row_above][col] != 0.0):
-                            row1_multiple = -1.0 * self.matrix[row_above][col] / self.matrix[row][col]
+                            row1_multiple = -1.0 * (self.matrix[row_above][col] / self.matrix[row][col])
                             self.matrix = RowOperations.addOperation(self.matrix, row, row_above, row1_multiple, 1)
 
                     break
